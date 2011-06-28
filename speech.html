@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- A simple HTML page with jQuery logic to connect to a socket.io instance and publish messages. -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:9000/socket.io/socket.io.js"></script>
+<style type="text/css">
+
+img {
+ display: block;
+ margin-left: auto;
+ margin-right: auto 
+} 
+
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		// Create a new connection
+		var socket = new io.Socket('127.0.0.1', {
+			port : 9000
+		});
+		socket.connect();
+
+		// Display connected text.
+		socket.on('connect', function() {
+			console.log('Connected to server...');
+		});
+
+		$('#target').submit(function() {
+			var message = $('input:first').val();
+			socket.send(message);
+			$('#statements').append('<p>' + message + '</p>');
+			$('input:first').val("");
+			return false;
+		}); 
+
+	});
+</script>
+<body>
+<center>
+	<img src="tropo.jpeg" height="100" width="130" alt="Tropo logo" title="Tropo Cloud Communications Platform"/>
+	<h2>Making Tropo Talk with Node.js and Redis</h2>
+	<form id="target" action="#">
+	<input type="text" value="" size="45%" /> 
+	<input type="submit" value="Make Tropo say this" />
+	</form>
+	<div id="statements">
+	<h4>Things I made Tropo say:</h4>
+	</div>
+</center>
+</body>
