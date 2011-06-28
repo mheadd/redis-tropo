@@ -14,7 +14,7 @@ You'll need to following to run this example:
 * A web server to serve the file socket.html (the HTML + jQuery page in this solution).
 
 You will need to modify the files "redis-tropo.php" and "speech.js" to add the settings for your Redis instance.
-Create a new Tropo Scripting application and use the "tredis-tropo.php" file as the source file for the application.
+Create a new Tropo Scripting application and use the "redis-tropo.php" file as the source file for the application.
 Launch the file "speech.js" using Node.js (by default, this server will listen on localhost port 9000, change this if needed):
 
 	node path/to/speech.js
